@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:grand_fresh/models/products/products.dart';
-import 'package:grand_fresh/productItem.dart';
+import 'package:grand_fresh/widgets/productItem.dart';
 import 'package:http/http.dart' as http;
-import 'categoryItem.dart';
-import 'models/categories/categories.dart';
-import 'models/categories/category_detail.dart';
-import 'models/products/store_product.dart';
+import '../widgets/categoryItem.dart';
+import '../models/categories/categories.dart';
+import '../models/categories/category_detail.dart';
+import '../models/products/store_product.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -109,11 +109,16 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green,
-        leading: Icon(Icons.abc),
+        backgroundColor: Colors.white38,
+        leading: const CircleAvatar(
+          child: Text(
+            "E-SHOP",
+            style: TextStyle(fontSize: 14),
+          ),
+        ),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          children: const [
             Text(
               "Grand Fresh",
               style:
@@ -122,10 +127,13 @@ class _HomePageState extends State<HomePage> {
             Text("Chelannur, Kozhikode", style: TextStyle(color: Colors.grey)),
           ],
         ),
-        actions: [
-          ImageIcon(
-            AssetImage("assets/images/home-all-pdt-icon.png"),
-            size: 15,
+        actions: const [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ImageIcon(
+              AssetImage("assets/uploads/category/icons/menu-btn.png"),
+              size: 35,
+            ),
           )
         ],
         // actions: [ImageIcon(size: 5, AssetImage("assets/images/menu-btn.png"))],
@@ -133,6 +141,7 @@ class _HomePageState extends State<HomePage> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.max,
             children: [
               Column(
@@ -165,71 +174,80 @@ class _HomePageState extends State<HomePage> {
                       );
                     }),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Recent Products",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20),
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 2,
-                    height: MediaQuery.of(context).size.height / 3,
-                    child: Card(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Image.asset("assets/images/1646115445.jpeg"),
-                            Text(
-                              "Apple",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 8, bottom: 8),
-                              child: Text(
-                                '₹ 125',
-                                style:
-                                    TextStyle(color: Colors.grey, fontSize: 18),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Recent Products",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width / 2,
+                      height: MediaQuery.of(context).size.height / 3.5,
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(20),
+                                bottomRight: Radius.circular(20))),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Image.asset(
+                                  "assets/uploads/products/base_product/base_image/3481648114743.jpg"),
+                              Text(
+                                "Apple",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20),
                               ),
-                            ),
-                            Row(
-                              children: [
-                                RatingBarIndicator(
-                                  rating: 2.75,
-                                  itemBuilder: (context, index) => Icon(
-                                    Icons.star,
-                                    color: Colors.amber,
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(top: 8, bottom: 8),
+                                child: Text(
+                                  '₹ 125',
+                                  style: TextStyle(
+                                      color: Colors.grey, fontSize: 18),
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  RatingBarIndicator(
+                                    rating: 2.75,
+                                    itemBuilder: (context, index) => Icon(
+                                      Icons.star,
+                                      color: Colors.amber,
+                                    ),
+                                    itemCount: 5,
+                                    itemSize: 20.0,
+                                    direction: Axis.horizontal,
                                   ),
-                                  itemCount: 5,
-                                  itemSize: 20.0,
-                                  direction: Axis.horizontal,
-                                ),
-                                Text(
-                                  "(5.00)1",
-                                  style: TextStyle(color: Colors.grey),
-                                ),
-                              ],
-                            ),
-                          ],
+                                  Text(
+                                    "(5.00)1",
+                                    style: TextStyle(color: Colors.grey),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  )
-                ],
+                    )
+                  ],
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
+                  children: const [
                     Text(
                       "All Products",
                       style: TextStyle(
@@ -244,20 +262,23 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              GridView.count(
+              GridView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 1,
-                  // crossAxisSpacing: 4.0,
-                  mainAxisSpacing: 8.0,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  children: List.generate(products.length, (index) {
-                    var storeProduct = products[index];
-                    return ProductItem(
-                      image: storeProduct.productBaseImage!.substring(1),
-                      name: storeProduct.productName.toString(),
-                      price: storeProduct.productVarientPrice.toString(),
-                    );
-                  }))
+                  crossAxisSpacing: 5.0,
+                  mainAxisSpacing: 5.0,
+                ),
+                itemCount: products.length,
+                itemBuilder: (context, index) {
+                  return ProductItem(
+                    image: products[index].productBaseImage!.substring(1),
+                    name: products[index].productName.toString(),
+                    price: products[index].productVarientPrice.toString(),
+                  );
+                },
+              )
             ],
           ),
         ),

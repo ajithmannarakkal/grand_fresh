@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
 
 class CategoryItem extends StatelessWidget {
-  // final Image image;
-  // final String title;
+  final String image;
+  final String title;
   // final VoidCallback onPressed;
-  // CategoryItem({required this.title});
+  CategoryItem({required this.title, required this.image});
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(15.0),
-      child: Card(
-        color: Colors.white,
-        child: Column(
-          // crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Image.asset(
-              "assets/images/1646115445.jpeg",
+    return Column(
+      children: [
+        Container(
+          height: 90,
+          width: 100,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image.asset(
+              image,
               fit: BoxFit.fitWidth,
             ),
-            Text("0.0 (0)"),
-          ],
+          ),
         ),
-      ),
+        Text(title)
+      ],
     );
   }
 }

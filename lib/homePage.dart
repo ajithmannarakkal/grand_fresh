@@ -122,6 +122,12 @@ class _HomePageState extends State<HomePage> {
             Text("Chelannur, Kozhikode", style: TextStyle(color: Colors.grey)),
           ],
         ),
+        actions: [
+          ImageIcon(
+            AssetImage("assets/images/home-all-pdt-icon.png"),
+            size: 15,
+          )
+        ],
         // actions: [ImageIcon(size: 5, AssetImage("assets/images/menu-btn.png"))],
       ),
       body: SafeArea(
@@ -129,15 +135,34 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
+              Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      height: 120,
+                      width: double.infinity,
+                      child: Image.asset(
+                        "assets/images/slide.jpeg",
+                        // fit: BoxFit.fitWidth,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
               Container(
-                color: Colors.red,
-                height: MediaQuery.of(context).size.height / 4,
+                color: Colors.blueGrey,
+                height: MediaQuery.of(context).size.height / 6,
+                width: double.infinity,
                 child: ListView.builder(
                     itemCount: categories.length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
                       var category = categories[index];
-                      return CategoryItem();
+                      return CategoryItem(
+                        image: category.categoryIcon!.substring(1),
+                        title: category.categoryName.toString(),
+                      );
                     }),
               ),
               Column(
@@ -220,34 +245,18 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               GridView.count(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 4.0,
+                  crossAxisCount: 1,
+                  // crossAxisSpacing: 4.0,
                   mainAxisSpacing: 8.0,
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   children: List.generate(products.length, (index) {
                     var storeProduct = products[index];
                     return ProductItem(
+                      image: storeProduct.productBaseImage!.substring(1),
                       name: storeProduct.productName.toString(),
                       price: storeProduct.productVarientPrice.toString(),
-                    )
-                        //  Card(
-                        //     color: Colors.orange,
-                        //     child: Center(
-                        //       child: Column(
-                        //           crossAxisAlignment: CrossAxisAlignment.center,
-                        //           children: <Widget>[
-                        //             Expanded(
-                        //                 child: Image.asset(
-                        //                     storeProduct.productBaseImage!,
-                        //                     height: 50.0,
-                        //                     width: 50)),
-                        //             Text(storeProduct.productName.toString(),
-                        //                 style:
-                        //                     const TextStyle(color: Colors.blue)),
-                        //           ]),
-                        //     ))
-                        ;
+                    );
                   }))
             ],
           ),

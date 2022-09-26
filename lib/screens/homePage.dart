@@ -124,7 +124,8 @@ class _HomePageState extends State<HomePage> {
               style:
                   TextStyle(color: Colors.black54, fontWeight: FontWeight.bold),
             ),
-            Text("Chelannur, Kozhikode", style: TextStyle(color: Colors.grey)),
+            Text("Chelannur, Kozhikode",
+                style: TextStyle(color: Colors.grey, fontSize: 13)),
           ],
         ),
         actions: const [
@@ -194,49 +195,46 @@ class _HomePageState extends State<HomePage> {
                             borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(20),
                                 bottomRight: Radius.circular(20))),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                  "assets/uploads/products/base_product/base_image/3481648114743.jpg"),
-                              Text(
-                                "Apple",
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Image.asset(
+                                "assets/uploads/products/base_product/base_image/3481648114743.jpg"),
+                            Text(
+                              "Apple",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20),
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 8, bottom: 8),
+                              child: Text(
+                                '₹ 125',
                                 style: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 20),
+                                    color: Colors.grey, fontSize: 18),
                               ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(top: 8, bottom: 8),
-                                child: Text(
-                                  '₹ 125',
-                                  style: TextStyle(
-                                      color: Colors.grey, fontSize: 18),
+                            ),
+                            Row(
+                              children: [
+                                RatingBarIndicator(
+                                  rating: 2.75,
+                                  itemBuilder: (context, index) => Icon(
+                                    Icons.star,
+                                    color: Colors.amber,
+                                  ),
+                                  itemCount: 5,
+                                  itemSize: 20.0,
+                                  direction: Axis.horizontal,
                                 ),
-                              ),
-                              Row(
-                                children: [
-                                  RatingBarIndicator(
-                                    rating: 2.75,
-                                    itemBuilder: (context, index) => Icon(
-                                      Icons.star,
-                                      color: Colors.amber,
-                                    ),
-                                    itemCount: 5,
-                                    itemSize: 20.0,
-                                    direction: Axis.horizontal,
-                                  ),
-                                  Text(
-                                    "(5.00)1",
-                                    style: TextStyle(color: Colors.grey),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
+                                Text(
+                                  "(5.00)1",
+                                  style: TextStyle(color: Colors.grey),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
                       ),
                     )

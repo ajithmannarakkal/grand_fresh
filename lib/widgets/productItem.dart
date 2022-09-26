@@ -81,6 +81,9 @@ class _ProductItemState extends State<ProductItem> {
                       value: simpleIntInput,
                       onChanged: (value) => setState(() => simpleIntInput =
                           int.parse(value.replaceAll(',', '')))),
+                  SizedBox(
+                    width: 10,
+                  ),
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           side: BorderSide(
